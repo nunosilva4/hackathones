@@ -17,6 +17,8 @@ public class Gangster {
             fetch = FetchType.LAZY
     )
     private Crew crew;
+    @Version
+    private Integer version;
 
     public Gangster() {
     }
