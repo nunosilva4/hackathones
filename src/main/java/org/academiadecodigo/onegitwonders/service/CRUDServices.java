@@ -4,11 +4,13 @@ import java.util.List;
 
 public interface CRUDServices<T> {
 
-    T findById(Integer id);
+    T findByName(String name) throws Exception;
 
-    List<T> findAll();
+    List<T> sortedList();
 
-    T saveOrUpdate(T entity);
+    T create(T crew) throws Exception;
 
-    void delete(Integer id);
+    T edit(T crew) throws Exception;
+
+    void delete(String name) throws Exception;
 }
