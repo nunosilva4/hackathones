@@ -12,6 +12,7 @@ public class Crew {
     private String name;
     private String logo; //filepath
     private String tag; //filepath
+    private Integer crewRep;
     @OneToMany(
             mappedBy = "crew",
             cascade = {CascadeType.ALL},
@@ -20,6 +21,14 @@ public class Crew {
     private List<Gangster> members = new ArrayList<>();
 
     public Crew() {
+    }
+
+    public Integer getCrewRep() {
+        return crewRep;
+    }
+
+    public void setCrewRep(Integer crewRep) {
+        this.crewRep = crewRep;
     }
 
     public String getName() {
