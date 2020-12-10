@@ -4,7 +4,7 @@ import org.academiadecodigo.onegitwonders.dao.Dao;
 import org.academiadecodigo.onegitwonders.exceptions.CrewNotFoundException;
 import org.academiadecodigo.onegitwonders.model.Crew;
 import org.academiadecodigo.onegitwonders.model.Gangster;
-import org.academiadecodigo.onegitwonders.service.CrewServices;
+import org.academiadecodigo.onegitwonders.service.CrewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,10 +13,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class CrewServicesImpl extends AbstractJpaService<Crew> implements CrewServices {
+public class CrewServiceImpl extends AbstractJpaService<Crew> implements CrewService {
 
     @Autowired
-    public CrewServicesImpl(Dao<Crew> crewDao) {
+    public CrewServiceImpl(Dao<Crew> crewDao) {
         super(crewDao, Crew.class);
     }
 

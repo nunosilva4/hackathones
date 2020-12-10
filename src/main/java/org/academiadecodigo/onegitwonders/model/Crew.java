@@ -8,9 +8,9 @@ import java.util.List;
 @Table(name = "crew")
 public class Crew extends Model{
 
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Id
     private String name;
     private String logo; //filepath
     private String tag; //filepath

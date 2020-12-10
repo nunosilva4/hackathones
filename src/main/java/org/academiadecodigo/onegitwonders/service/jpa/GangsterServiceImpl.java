@@ -3,7 +3,7 @@ package org.academiadecodigo.onegitwonders.service.jpa;
 import org.academiadecodigo.onegitwonders.dao.Dao;
 import org.academiadecodigo.onegitwonders.exceptions.GangsterNotFoundException;
 import org.academiadecodigo.onegitwonders.model.Gangster;
-import org.academiadecodigo.onegitwonders.service.GangsterServices;
+import org.academiadecodigo.onegitwonders.service.GangsterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,10 +11,10 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 
 @Service
-public class GangsterServicesImpl extends AbstractJpaService<Gangster> implements GangsterServices {
+public class GangsterServiceImpl extends AbstractJpaService<Gangster> implements GangsterService {
 
     @Autowired
-    public GangsterServicesImpl(Dao<Gangster> dao) {
+    public GangsterServiceImpl(Dao<Gangster> dao) {
         super(dao, Gangster.class);
     }
 

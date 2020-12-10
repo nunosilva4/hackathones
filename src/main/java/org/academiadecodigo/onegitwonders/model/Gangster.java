@@ -6,9 +6,9 @@ import javax.persistence.*;
 @Table(name = "gangster")
 public class Gangster extends Model {
 
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Id
     private String streetName;
     private String realName;
     private String email;

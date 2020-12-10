@@ -5,7 +5,7 @@ import org.academiadecodigo.onegitwonders.model.Gangster;
 
 import java.util.List;
 
-public interface CrewServices extends CRUDServices<Crew> {
+public interface CrewService extends CRUDServices<Crew> {
 
     List<Gangster> listMembers(Integer id);
 

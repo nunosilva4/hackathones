@@ -1,8 +1,8 @@
 package org.academiadecodigo.onegitwonders.dto;
 
-import javax.validation.constraints.Email;
+import org.academiadecodigo.onegitwonders.model.Crew;
+
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 
 public class GangsterDto {
 
@@ -12,11 +12,10 @@ public class GangsterDto {
     private Integer streetRep;
     private String avatar;
     private String realName;
-    @Email
-    @Pattern(regexp = "[^@ \\t\\r\\n]+@[^@ \\t\\r\\n]+\\.[^@ \\t\\r\\n]+", message = "Invalid email address")
     private String email;
     private String password;
-    private String crewName;
+    private Crew crew;
+    private Boolean busted;
 
     public GangsterDto() {
     }
@@ -27,6 +26,22 @@ public class GangsterDto {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Boolean getBusted() {
+        return busted;
+    }
+
+    public void setBusted(Boolean busted) {
+        this.busted = busted;
+    }
+
+    public Crew getCrew() {
+        return crew;
+    }
+
+    public void setCrew(Crew crew) {
+        this.crew = crew;
     }
 
     public String getStreetName() {
@@ -77,11 +92,4 @@ public class GangsterDto {
         this.password = password;
     }
 
-    public String getCrewName() {
-        return crewName;
-    }
-
-    public void setCrewName(String crewName) {
-        this.crewName = crewName;
-    }
 }
