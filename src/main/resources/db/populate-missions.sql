@@ -1,0 +1,3 @@
+DELETE FROM mission;
+INSERT INTO mission(TITLE, DESCRIPTION, REPCOST, SUCCESSRATE, REPREWARD, VERSION) VALUES
+('Mission 1', 'Random description', 5, 0.9, 10, 0);

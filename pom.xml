@@ -25,16 +25,16 @@
                 </configuration>
             </plugin>
 
-            <!--<plugin>
+            <plugin>
             <groupId>org.apache.tomcat.maven</groupId>
             <artifactId>tomcat7-maven-plugin</artifactId>
             <version>2.2</version>
             <configuration>
                 <url>http://localhost:8080/manager/text</url>
                 <server>tomcat</server>
-                <path>/javabank5</path>
+                <path>/gangstergram</path>
             </configuration>
-        </plugin>-->
+        </plugin>
 
         </plugins>
 
@@ -147,8 +147,6 @@
             <version>2.2.0</version>
             <scope>test</scope>
         </dependency>
-
-
 
     </dependencies>
 
