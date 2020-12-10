@@ -6,8 +6,10 @@ import java.util.List;
 
 @Entity
 @Table(name = "crew")
-public class Crew {
+public class Crew extends Model{
 
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     @Id
     private String name;
     private String logo; //filepath
@@ -21,6 +23,14 @@ public class Crew {
     private List<Gangster> members = new ArrayList<>();
 
     public Crew() {
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Integer getCrewRep() {

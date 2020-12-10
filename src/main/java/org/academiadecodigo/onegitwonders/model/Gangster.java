@@ -4,8 +4,10 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "gangster")
-public class Gangster {
+public class Gangster extends Model {
 
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     @Id
     private String streetName;
     private String realName;
@@ -18,18 +20,16 @@ public class Gangster {
             fetch = FetchType.LAZY
     )
     private Crew crew;
-    @Version
-    private Integer version;
 
     public Gangster() {
     }
 
-    public Integer getVersion() {
-        return version;
+    public Integer getId() {
+        return id;
     }
 
-    public void setVersion(Integer version) {
-        this.version = version;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Boolean getBusted() {

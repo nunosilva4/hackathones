@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class GangsterDaoImpl extends GenericDaoImpl<Gangster> {
 
-    public GangsterDaoImpl(Class<Gangster> modelType) {
-        super(modelType);
+    public GangsterDaoImpl() {
+        super(Gangster.class);
     }
 }

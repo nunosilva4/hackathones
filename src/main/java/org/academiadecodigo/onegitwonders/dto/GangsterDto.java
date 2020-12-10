@@ -6,6 +6,7 @@ import javax.validation.constraints.Pattern;
 
 public class GangsterDto {
 
+    private Integer id;
     @NotNull
     private String streetName;
     private Integer streetRep;
@@ -18,6 +19,14 @@ public class GangsterDto {
     private String crewName;
 
     public GangsterDto() {
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getStreetName() {

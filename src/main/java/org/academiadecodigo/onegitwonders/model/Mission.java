@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "mission")
-public class Mission {
+public class Mission extends Model {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,8 +14,6 @@ public class Mission {
     private Integer repCost;
     private Double successRate;
     private Integer repReward;
-    @Version
-    private Integer version;
 
     public Mission() {
     }
@@ -26,14 +24,6 @@ public class Mission {
 
     public void setRepReward(Integer repReward) {
         this.repReward = repReward;
-    }
-
-    public Integer getVersion() {
-        return version;
-    }
-
-    public void setVersion(Integer version) {
-        this.version = version;
     }
 
     public Integer getId() {

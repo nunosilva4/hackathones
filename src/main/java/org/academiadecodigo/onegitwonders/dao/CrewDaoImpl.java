@@ -6,8 +6,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class CrewDaoImpl extends GenericDaoImpl<Crew> {
 
-    public CrewDaoImpl(Class<Crew> modelType) {
-        super(modelType);
+    public CrewDaoImpl() {
+        super(Crew.class);
     }
 
 }

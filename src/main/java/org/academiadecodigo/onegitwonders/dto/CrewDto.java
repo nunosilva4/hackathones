@@ -2,12 +2,21 @@ package org.academiadecodigo.onegitwonders.dto;
 
 public class CrewDto {
 
+    private Integer id;
     private String name;
     private String logo;
     private String tag;
     private Integer crewRep;
 
     public CrewDto() {
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Integer getCrewRep() {
