@@ -1,13 +1,23 @@
 package org.academiadecodigo.onegitwonders.model;
 
+import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "crew")
 public class Crew {
 
+    @Id
     private String name;
-    private List<Gangster> members;
     private String logo; //filepath
     private String tag; //filepath
+    @OneToMany(
+            mappedBy = "crew",
+            cascade = {CascadeType.ALL},
+            fetch = FetchType.EAGER
+    )
+    private List<Gangster> members = new ArrayList<>();
 
     public Crew() {
     }

@@ -1,22 +1,39 @@
 package org.academiadecodigo.onegitwonders.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "gangster")
 public class Gangster {
 
+    @Id
     private String streetName;
     private String realName;
     private String email;
     private String password;
     private Integer streetRep;
-    private Avatar avatar;
+    private String avatar;
+    @ManyToOne(
+            fetch = FetchType.LAZY
+    )
+    private Crew crew;
 
     public Gangster() {
     }
 
-    public Avatar getAvatar() {
+    public Crew getCrew() {
+        return crew;
+    }
+
+    public void setCrew(Crew crew) {
+        this.crew = crew;
+    }
+
+    public String getAvatar() {
         return avatar;
     }
 
-    public void setAvatar(Avatar avatar) {
+    public void setAvatar(String avatar) {
         this.avatar = avatar;
     }
 
