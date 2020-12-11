@@ -2,10 +2,13 @@ package org.academiadecodigo.onegitwonders.rest;
 
 import org.academiadecodigo.onegitwonders.dto.Assembler;
 import org.academiadecodigo.onegitwonders.dto.GangsterDto;
+import org.academiadecodigo.onegitwonders.exceptions.CrewNotFoundException;
 import org.academiadecodigo.onegitwonders.exceptions.GangsterGramException;
 import org.academiadecodigo.onegitwonders.exceptions.GangsterNotFoundException;
 import org.academiadecodigo.onegitwonders.exceptions.NotEnoughRepException;
+import org.academiadecodigo.onegitwonders.model.Crew;
 import org.academiadecodigo.onegitwonders.model.Gangster;
+import org.academiadecodigo.onegitwonders.service.CrewService;
 import org.academiadecodigo.onegitwonders.service.GangsterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -27,11 +30,13 @@ public class GangsterController {
 
     private Assembler assembler;
     private GangsterService gangsterService;
+    private CrewService crewService;
 
     @Autowired
-    public GangsterController(Assembler assembler, GangsterService gangsterService) {
+    public GangsterController(Assembler assembler, GangsterService gangsterService, CrewService crewService) {
         this.assembler = assembler;
         this.gangsterService = gangsterService;
+        this.crewService = crewService;
     }
 
     @GetMapping(value = {"/", ""})
@@ -50,6 +55,24 @@ public class GangsterController {
 
         } catch (GangsterNotFoundException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    //fixme 500 server error, but updating anyway, wtf?
+    @PutMapping("/{id}/selectcrew")
+    public ResponseEntity<?> selectCrew(@PathVariable Integer id, @RequestBody Integer crewId) {
+
+        try {
+            Gangster gangster = gangsterService.get(id);
+            Crew crew = crewService.get(crewId);
+            gangster.setCrew(crew);
+            crew.getMembers().add(gangster);
+            gangsterService.save(gangster);
+            crewService.save(crew);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+
+        } catch (GangsterNotFoundException | CrewNotFoundException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
 

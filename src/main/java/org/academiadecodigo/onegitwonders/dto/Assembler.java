@@ -29,7 +29,6 @@ public class Assembler {
 
         gangster.setStreetName(gangsterDto.getStreetName());
         gangster.setRealName(gangsterDto.getRealName());
-        gangster.setCrew(gangsterDto.getCrew());
         gangster.setAvatar(gangsterDto.getAvatar());
         gangster.setEmail(gangsterDto.getEmail());
         gangster.setPassword(gangsterDto.getPassword());
@@ -45,7 +44,6 @@ public class Assembler {
 
         gangster.setStreetName(gangsterDto.getStreetName());
         gangster.setRealName(gangsterDto.getRealName());
-        gangster.setCrew(gangsterDto.getCrew());
         gangster.setAvatar(gangsterDto.getAvatar());
         gangster.setEmail(gangsterDto.getEmail());
         gangster.setPassword(gangsterDto.getPassword());
@@ -110,7 +108,6 @@ public class Assembler {
         GangsterDto gangsterDto = new GangsterDto();
 
         gangsterDto.setId(gangster.getId());
-        gangsterDto.setCrew(gangster.getCrew());
         gangsterDto.setBusted(gangster.getBusted());
         gangsterDto.setEmail(gangster.getEmail());
         gangsterDto.setAvatar(gangster.getAvatar());

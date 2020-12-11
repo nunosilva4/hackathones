@@ -1,7 +1,5 @@
 package org.academiadecodigo.onegitwonders.dto;
 
-import org.academiadecodigo.onegitwonders.model.Crew;
-
 import javax.validation.constraints.NotNull;
 
 public class GangsterDto {
@@ -14,7 +12,6 @@ public class GangsterDto {
     private String realName;
     private String email;
     private String password;
-    private Crew crew;
     private Boolean busted;
 
     public GangsterDto() {
@@ -34,14 +31,6 @@ public class GangsterDto {
 
     public void setBusted(Boolean busted) {
         this.busted = busted;
-    }
-
-    public Crew getCrew() {
-        return crew;
-    }
-
-    public void setCrew(Crew crew) {
-        this.crew = crew;
     }
 
     public String getStreetName() {
