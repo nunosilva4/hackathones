@@ -4,6 +4,7 @@ import org.academiadecodigo.onegitwonders.dto.Assembler;
 import org.academiadecodigo.onegitwonders.dto.GangsterDto;
 import org.academiadecodigo.onegitwonders.exceptions.GangsterGramException;
 import org.academiadecodigo.onegitwonders.exceptions.GangsterNotFoundException;
+import org.academiadecodigo.onegitwonders.exceptions.NotEnoughRepException;
 import org.academiadecodigo.onegitwonders.model.Gangster;
 import org.academiadecodigo.onegitwonders.service.GangsterService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,6 +50,28 @@ public class GangsterController {
 
         } catch (GangsterNotFoundException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @PutMapping("/{id}/receiverep")
+    public ResponseEntity<?> receiveRep(@PathVariable Integer id, @RequestBody Integer amount) {
+
+        if (amount <= 0) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
+        gangsterService.receiveRep(id, amount);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @PutMapping("{id}/spendrep")
+    public ResponseEntity<?> spendRep(@PathVariable Integer id, @RequestBody Integer amount) {
+
+        try {
+            gangsterService.spendRep(id, amount);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (NotEnoughRepException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
         }
     }
 

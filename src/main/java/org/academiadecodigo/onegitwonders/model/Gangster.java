@@ -24,6 +24,10 @@ public class Gangster extends Model {
     public Gangster() {
     }
 
+    public boolean hasEnoughRep(Integer rep) {
+        return streetRep >= rep;
+    }
+
     public Integer getId() {
         return id;
     }
