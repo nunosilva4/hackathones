@@ -2,6 +2,7 @@ package org.academiadecodigo.onegitwonders.rest;
 
 import org.academiadecodigo.onegitwonders.dto.Assembler;
 import org.academiadecodigo.onegitwonders.dto.CrewDto;
+import org.academiadecodigo.onegitwonders.dto.GangsterDto;
 import org.academiadecodigo.onegitwonders.exceptions.CrewNotFoundException;
 import org.academiadecodigo.onegitwonders.exceptions.GangsterNotFoundException;
 import org.academiadecodigo.onegitwonders.exceptions.MalformedGangsterException;
@@ -32,6 +33,19 @@ public class CrewController {
     public CrewController(Assembler assembler, CrewService crewService) {
         this.assembler = assembler;
         this.crewService = crewService;
+    }
+
+    @GetMapping(value = "/{id}/members")
+    public ResponseEntity<List<GangsterDto>> listMembers(@PathVariable Integer id) {
+
+        try {
+            return new ResponseEntity<>(crewService.get(id).getMembers()
+                    .stream()
+                    .map(assembler::toGangsterDto)
+                    .collect(Collectors.toList()), HttpStatus.OK);
+        } catch (GangsterNotFoundException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
     @GetMapping(value = {"/", ""})
