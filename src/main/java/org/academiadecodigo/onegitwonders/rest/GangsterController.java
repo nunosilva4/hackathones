@@ -58,18 +58,19 @@ public class GangsterController {
         }
     }
 
-    @PutMapping("/{id}/selectcrew")
-    public ResponseEntity<?> selectCrew(@PathVariable Integer id, @RequestBody Integer crewId) {
+    @CrossOrigin(origins = "*")
+    @PutMapping("/{id}/selectcrew/{selectedId}")
+    public ResponseEntity<?> selectCrew(@PathVariable Integer id, @PathVariable Integer selectedId) {
 
         try {
             Gangster gangster = gangsterService.get(id);
-            Crew crew = crewService.get(crewId);
+            Crew crew = crewService.get(selectedId);
             gangster.setCrew(crew);
             gangsterService.save(gangster);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 
         } catch (GangsterNotFoundException | CrewNotFoundException e) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
@@ -119,7 +120,7 @@ public class GangsterController {
 
         try {
             Gangster toSave = assembler.fromNewGangsterDto(gangsterDto);
-            gangsterService.save(toSave);
+            toSave = gangsterService.save(toSave);
 
             UriComponents component = componentsBuilder
                     .path("/api/gangster/" + toSave.getId())
@@ -128,7 +129,7 @@ public class GangsterController {
             HttpHeaders headers = new HttpHeaders();
             headers.setLocation(component.toUri());
 
-            return new ResponseEntity<>(headers, HttpStatus.CREATED);
+            return new ResponseEntity<>(toSave, headers, HttpStatus.CREATED);
 
         } catch (GangsterGramException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

@@ -32,4 +32,8 @@
         <property name="cacheable" value="false"/>
         <property name="characterEncoding" value="UTF-8"/>
     </bean>
+
+    <mvc:cors>
+        <mvc:mapping path="/**" />
+    </mvc:cors>
 </beans>
