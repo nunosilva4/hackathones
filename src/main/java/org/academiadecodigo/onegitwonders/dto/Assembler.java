@@ -60,7 +60,7 @@ public class Assembler {
         Crew crew = new Crew();
 
         crew.setName(crewDto.getName());
-        crew.setCrewRep(crewDto.getCrewRep());
+        crew.setCrewRep(0);
         crew.setLogo(crewDto.getLogo());
         crew.setTag(crewDto.getTag());
 
