@@ -19,7 +19,7 @@ public class Crew extends Model{
     )
     private List<Gangster> members = new ArrayList<>();
     @OneToMany(
-            fetch = FetchType.EAGER,
+            fetch = FetchType.LAZY,
             mappedBy = "crew"
     )
     private List<Avatar> avatars = new ArrayList<>();
