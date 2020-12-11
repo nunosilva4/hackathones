@@ -6,7 +6,6 @@ import org.academiadecodigo.onegitwonders.exceptions.CrewNotFoundException;
 import org.academiadecodigo.onegitwonders.exceptions.GangsterNotFoundException;
 import org.academiadecodigo.onegitwonders.exceptions.MalformedGangsterException;
 import org.academiadecodigo.onegitwonders.model.Crew;
-import org.academiadecodigo.onegitwonders.model.Gangster;
 import org.academiadecodigo.onegitwonders.service.CrewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -70,7 +69,7 @@ public class CrewController {
     }
 
     @PostMapping(value = {"", "/"})
-    public ResponseEntity<?> createCustomer(@Valid @RequestBody CrewDto crewDto, BindingResult validation, UriComponentsBuilder componentsBuilder) {
+    public ResponseEntity<?> createCrew(@Valid @RequestBody CrewDto crewDto, BindingResult validation, UriComponentsBuilder componentsBuilder) {
 
         if (validation.hasErrors()) {
             return new ResponseEntity<>(validation.getAllErrors(), HttpStatus.BAD_REQUEST);
@@ -95,7 +94,7 @@ public class CrewController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteCustomer(@PathVariable Integer id) {
+    public ResponseEntity<?> deleteCrew(@PathVariable Integer id) {
 
         try {
             crewService.delete(id);
