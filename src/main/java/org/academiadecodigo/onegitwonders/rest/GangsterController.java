@@ -58,7 +58,6 @@ public class GangsterController {
         }
     }
 
-    //fixme 500 server error, but updating anyway, wtf?
     @PutMapping("/{id}/selectcrew")
     public ResponseEntity<?> selectCrew(@PathVariable Integer id, @RequestBody Integer crewId) {
 
@@ -66,9 +65,7 @@ public class GangsterController {
             Gangster gangster = gangsterService.get(id);
             Crew crew = crewService.get(crewId);
             gangster.setCrew(crew);
-            crew.getMembers().add(gangster);
             gangsterService.save(gangster);
-            crewService.save(crew);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 
         } catch (GangsterNotFoundException | CrewNotFoundException e) {

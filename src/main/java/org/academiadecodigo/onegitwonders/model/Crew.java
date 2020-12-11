@@ -20,6 +20,7 @@ public class Crew extends Model{
     private List<Gangster> members = new ArrayList<>();
     @OneToMany(
             fetch = FetchType.LAZY,
+            cascade = {CascadeType.ALL},
             mappedBy = "crew"
     )
     private List<Avatar> avatars = new ArrayList<>();

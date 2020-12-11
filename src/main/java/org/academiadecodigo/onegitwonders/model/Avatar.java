@@ -10,7 +10,7 @@ import javax.persistence.Table;
 public class Avatar extends Model {
 
     private String imageUrl;
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Crew crew;
 
     public String getImageUrl() {

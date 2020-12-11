@@ -4,7 +4,6 @@ import org.academiadecodigo.onegitwonders.model.Avatar;
 import org.academiadecodigo.onegitwonders.model.Crew;
 import org.academiadecodigo.onegitwonders.model.Gangster;
 import org.academiadecodigo.onegitwonders.model.Mission;
-import org.academiadecodigo.onegitwonders.service.AvatarService;
 import org.academiadecodigo.onegitwonders.service.CrewService;
 import org.academiadecodigo.onegitwonders.service.GangsterService;
 import org.academiadecodigo.onegitwonders.service.MissionService;
@@ -17,7 +16,6 @@ public class Assembler {
     private GangsterService gangsterService;
     private CrewService crewService;
     private MissionService missionService;
-    private AvatarService avatarService;
 
     @Autowired
     public Assembler(GangsterService gangsterService, CrewService crewService, MissionService missionService) {
@@ -109,30 +107,10 @@ public class Assembler {
         AvatarDto avatarDto = new AvatarDto();
 
         avatarDto.setImageUrl(avatar.getImageUrl());
-        avatarDto.setCrew(avatar.getCrew());
 
         return avatarDto;
     }
 
-    public Avatar fromNewAvatarDto(AvatarDto avatarDto, Integer id) {
-
-        Avatar avatar = avatarService.get(id);
-
-        avatar.setImageUrl(avatarDto.getImageUrl());
-        avatar.setCrew(avatarDto.getCrew());
-
-        return avatar;
-    }
-
-    public Avatar fromAvatarDto(AvatarDto avatarDto) {
-
-        Avatar avatar = new Avatar();
-
-        avatar.setImageUrl(avatarDto.getImageUrl());
-        avatar.setCrew(avatarDto.getCrew());
-
-        return avatar;
-    }
 
     public GangsterDto toGangsterDto(Gangster gangster) {
 

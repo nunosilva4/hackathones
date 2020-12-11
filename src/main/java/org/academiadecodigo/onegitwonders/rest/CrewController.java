@@ -8,6 +8,7 @@ import org.academiadecodigo.onegitwonders.exceptions.AvatarNotFoundException;
 import org.academiadecodigo.onegitwonders.exceptions.CrewNotFoundException;
 import org.academiadecodigo.onegitwonders.exceptions.GangsterNotFoundException;
 import org.academiadecodigo.onegitwonders.exceptions.MalformedGangsterException;
+import org.academiadecodigo.onegitwonders.model.Avatar;
 import org.academiadecodigo.onegitwonders.model.Crew;
 import org.academiadecodigo.onegitwonders.service.CrewService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,8 +42,8 @@ public class CrewController {
     public ResponseEntity<List<AvatarDto>> listAvatars(@PathVariable Integer id) {
 
         try {
-            Crew crew = crewService.get(id);
-            return new ResponseEntity<>(crew.getAvatars()
+            return new ResponseEntity<>(crewService
+                    .getAvatars(id)
                     .stream()
                     .map(assembler::toAvatarDto)
                     .collect(Collectors.toList()), HttpStatus.OK);

@@ -13,7 +13,8 @@ public class Gangster extends Model {
     private Integer streetRep;
     private String avatar;
     @ManyToOne(
-            fetch = FetchType.LAZY
+            fetch = FetchType.LAZY,
+            cascade = {CascadeType.PERSIST}
     )
     private Crew crew;
 

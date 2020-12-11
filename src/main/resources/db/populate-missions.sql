@@ -18,3 +18,16 @@ INSERT INTO crew(NAME, VERSION, LOGO, TAG, CREWREP) VALUES
 ('Bloods', 0, 'https://i.ibb.co/zZBwbMn/blood-crew-logo.png', 'notag', 0),
 ('Yakuza', 0, 'https://i.ibb.co/P5ppCVD/yakuza-crew-logo.png', 'notag', 0),
 ('Yardie', 0, 'https://i.ibb.co/VHsntKf/yardie-crew-logo.png', 'notag', 0);
+
+DELETE FROM avatar;
+INSERT INTO avatar(VERSION, IMAGEURL, CREW_ID) VALUES
+(0, 'https://i.ibb.co/DV6rQgQ/Yakuza-F-1.png', 4),
+(0, 'https://i.ibb.co/qkFg3Tn/Yakuza-F-2.png', 4),
+(0, 'https://i.ibb.co/M69TJ0w/Yakuza-F-3.png', 4),
+(0, 'https://i.ibb.co/Rz02wdr/Yakuza-F-4.png', 4),
+(0, 'https://i.ibb.co/SPm9wJR/Yakuza-F-5.png', 4),
+(0, 'https://i.ibb.co/R7NQCRJ/Yakuza-M-1.png', 4),
+(0, 'https://i.ibb.co/J7P2fh2/Yakuza-M-2.png', 4),
+(0, 'https://i.ibb.co/wJ9XM72/Yakuza-M-3.png', 4),
+(0, 'https://i.ibb.co/XJ3JFx9/Yakuza-M-4.png', 4),
+(0, 'https://i.ibb.co/Hn6znbd/Yakuza-M-5.png', 4);
