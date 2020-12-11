@@ -10,3 +10,11 @@ INSERT INTO mission(TITLE, DESCRIPTION, REPCOST, SUCCESSRATE, REPREWARD, VERSION
 ('Getting serious', 'Police station. Evidence locker. Just getting back what´s mine.', 4000, 0.4, 7500, 0),
 ('Life is a gamble', 'High stakes poker game at a rival crew turf. Undercover heist?', 10000, 0.35, 25000, 0),
 ('High risk, high reward', 'Time to wipe out another Crew. Like taking candy from a baby.', 40000, 0.3, 100000, 0);
+
+DELETE FROM crew;
+INSERT INTO crew(NAME, VERSION, LOGO, TAG, CREWREP) VALUES
+('Aryan Brotherhood', 0, 'https://i.ibb.co/CK69rZ2/aryan-resistance-logo.png', 'notag', 0),
+('Los Vagos', 0, 'https://i.ibb.co/cXJ0FJv/los-vagos-crew-logo.png', 'notag', 0),
+('Bloods', 0, 'https://i.ibb.co/zZBwbMn/blood-crew-logo.png', 'notag', 0),
+('Yakuza', 0, 'https://i.ibb.co/P5ppCVD/yakuza-crew-logo.png', 'notag', 0),
+('Yardie', 0, 'https://i.ibb.co/VHsntKf/yardie-crew-logo.png', 'notag', 0);
