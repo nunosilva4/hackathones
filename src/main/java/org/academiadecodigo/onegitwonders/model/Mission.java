@@ -6,9 +6,6 @@ import javax.persistence.*;
 @Table(name = "mission")
 public class Mission extends Model {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
     private String title;
     private String description;
     private Integer repCost;
@@ -24,14 +21,6 @@ public class Mission extends Model {
 
     public void setRepReward(Integer repReward) {
         this.repReward = repReward;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public String getTitle() {

@@ -8,9 +8,6 @@ import java.util.List;
 @Table(name = "crew")
 public class Crew extends Model{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
     private String name;
     private String logo; //filepath
     private String tag; //filepath
@@ -21,16 +18,21 @@ public class Crew extends Model{
             fetch = FetchType.EAGER
     )
     private List<Gangster> members = new ArrayList<>();
+    @OneToMany(
+            fetch = FetchType.EAGER,
+            mappedBy = "crew"
+    )
+    private List<Avatar> avatars = new ArrayList<>();
 
     public Crew() {
     }
 
-    public Integer getId() {
-        return id;
+    public List<Avatar> getAvatars() {
+        return avatars;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setAvatars(List<Avatar> avatars) {
+        this.avatars = avatars;
     }
 
     public Integer getCrewRep() {

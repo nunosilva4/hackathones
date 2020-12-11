@@ -6,9 +6,6 @@ import javax.persistence.*;
 @Table(name = "gangster")
 public class Gangster extends Model {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
     private String streetName;
     private String realName;
     private String email;
@@ -25,14 +22,6 @@ public class Gangster extends Model {
 
     public boolean hasEnoughRep(Integer rep) {
         return streetRep >= rep;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public Crew getCrew() {

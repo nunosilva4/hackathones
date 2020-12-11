@@ -1,8 +1,10 @@
 package org.academiadecodigo.onegitwonders.rest;
 
 import org.academiadecodigo.onegitwonders.dto.Assembler;
+import org.academiadecodigo.onegitwonders.dto.AvatarDto;
 import org.academiadecodigo.onegitwonders.dto.CrewDto;
 import org.academiadecodigo.onegitwonders.dto.GangsterDto;
+import org.academiadecodigo.onegitwonders.exceptions.AvatarNotFoundException;
 import org.academiadecodigo.onegitwonders.exceptions.CrewNotFoundException;
 import org.academiadecodigo.onegitwonders.exceptions.GangsterNotFoundException;
 import org.academiadecodigo.onegitwonders.exceptions.MalformedGangsterException;
@@ -33,6 +35,20 @@ public class CrewController {
     public CrewController(Assembler assembler, CrewService crewService) {
         this.assembler = assembler;
         this.crewService = crewService;
+    }
+
+    @GetMapping(value = "{id}/avatars")
+    public ResponseEntity<List<AvatarDto>> listAvatars(@PathVariable Integer id) {
+
+        try {
+            Crew crew = crewService.get(id);
+            return new ResponseEntity<>(crew.getAvatars()
+                    .stream()
+                    .map(assembler::toAvatarDto)
+                    .collect(Collectors.toList()), HttpStatus.OK);
+        } catch (CrewNotFoundException | AvatarNotFoundException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
     @GetMapping(value = "/{id}/members")
