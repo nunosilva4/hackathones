@@ -1,11 +1,11 @@
 package org.academiadecodigo.onegitwonders.rest;
 
 import org.academiadecodigo.onegitwonders.dto.Assembler;
-import org.academiadecodigo.onegitwonders.dto.GangsterDto;
+import org.academiadecodigo.onegitwonders.dto.MissionDto;
 import org.academiadecodigo.onegitwonders.exceptions.GangsterGramException;
 import org.academiadecodigo.onegitwonders.exceptions.GangsterNotFoundException;
-import org.academiadecodigo.onegitwonders.model.Gangster;
-import org.academiadecodigo.onegitwonders.service.GangsterService;
+import org.academiadecodigo.onegitwonders.model.Mission;
+import org.academiadecodigo.onegitwonders.service.MissionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -21,31 +21,31 @@ import java.util.stream.Collectors;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("/api/gangster")
-public class GangsterController {
+@RequestMapping("/api/mission")
+public class MissionController {
 
     private Assembler assembler;
-    private GangsterService gangsterService;
+    private MissionService missionService;
 
     @Autowired
-    public GangsterController(Assembler assembler, GangsterService gangsterService) {
+    public MissionController(Assembler assembler, MissionService missionService) {
         this.assembler = assembler;
-        this.gangsterService = gangsterService;
+        this.missionService = missionService;
     }
 
     @GetMapping(value = {"/", ""})
-    public ResponseEntity<List<GangsterDto>> listGangsters() {
+    public ResponseEntity<List<MissionDto>> listGangsters() {
 
-        return new ResponseEntity<>(gangsterService.list()
+        return new ResponseEntity<>(missionService.list()
                 .stream()
-                .map(assembler::toGangsterDto)
+                .map(assembler::toMissionDto)
                 .collect(Collectors.toList()), HttpStatus.OK);
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<?> getGangster(@PathVariable Integer id) {
+    public ResponseEntity<?> getMission(@PathVariable Integer id) {
         try {
-            return new ResponseEntity<>(assembler.toGangsterDto(gangsterService.get(id)), HttpStatus.OK);
+            return new ResponseEntity<>(assembler.toMissionDto(missionService.get(id)), HttpStatus.OK);
 
         } catch (GangsterNotFoundException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -53,13 +53,13 @@ public class GangsterController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> edit(@PathVariable Integer id, @Valid @RequestBody GangsterDto gangsterDto, BindingResult validation) {
+    public ResponseEntity<?> edit(@PathVariable Integer id, @Valid @RequestBody MissionDto missionDto, BindingResult validation) {
 
         if (validation.hasErrors()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         try {
-            gangsterService.save(assembler.fromExistingGangsterDto(gangsterDto, id));
+            missionService.save(assembler.fromMissionDto(missionDto, id));
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 
         } catch (GangsterNotFoundException e) {
@@ -68,18 +68,18 @@ public class GangsterController {
     }
 
     @PostMapping(value = {"", "/"})
-    public ResponseEntity<?> createGangster(@Valid @RequestBody GangsterDto gangsterDto, BindingResult validation, UriComponentsBuilder componentsBuilder) {
+    public ResponseEntity<?> createMission(@Valid @RequestBody MissionDto missionDto, BindingResult validation, UriComponentsBuilder componentsBuilder) {
 
         if (validation.hasErrors()) {
             return new ResponseEntity<>(validation.getAllErrors(), HttpStatus.BAD_REQUEST);
         }
 
         try {
-            Gangster toSave = assembler.fromNewGangsterDto(gangsterDto);
-            gangsterService.save(toSave);
+            Mission toSave = assembler.fromNewMissionDto(missionDto);
+            missionService.save(toSave);
 
             UriComponents component = componentsBuilder
-                    .path("/api/gangster/" + toSave.getId())
+                    .path("/api/mission/" + toSave.getId())
                     .build();
 
             HttpHeaders headers = new HttpHeaders();
@@ -93,10 +93,10 @@ public class GangsterController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteGangster(@PathVariable Integer id) {
+    public ResponseEntity<?> deleteMission(@PathVariable Integer id) {
 
         try {
-            gangsterService.delete(id);
+            missionService.delete(id);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 
         } catch (GangsterNotFoundException e) {
