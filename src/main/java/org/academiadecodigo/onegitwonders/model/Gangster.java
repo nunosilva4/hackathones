@@ -14,7 +14,6 @@ public class Gangster extends Model {
     private String email;
     private String password;
     private Integer streetRep;
-    private Boolean busted;
     private String avatar;
     @ManyToOne(
             fetch = FetchType.LAZY
@@ -34,14 +33,6 @@ public class Gangster extends Model {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Boolean getBusted() {
-        return busted;
-    }
-
-    public void setBusted(Boolean busted) {
-        this.busted = busted;
     }
 
     public Crew getCrew() {

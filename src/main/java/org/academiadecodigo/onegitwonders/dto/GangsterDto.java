@@ -12,7 +12,6 @@ public class GangsterDto {
     private String realName;
     private String email;
     private String password;
-    private Boolean busted;
 
     public GangsterDto() {
     }
@@ -23,14 +22,6 @@ public class GangsterDto {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Boolean getBusted() {
-        return busted;
-    }
-
-    public void setBusted(Boolean busted) {
-        this.busted = busted;
     }
 
     public String getStreetName() {
