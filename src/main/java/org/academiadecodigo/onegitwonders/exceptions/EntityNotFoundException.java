@@ -1,5 +1,6 @@
 package org.academiadecodigo.onegitwonders.exceptions;
 
+import org.academiadecodigo.onegitwonders.model.Avatar;
 import org.academiadecodigo.onegitwonders.model.Crew;
 import org.academiadecodigo.onegitwonders.model.Gangster;
 import org.academiadecodigo.onegitwonders.model.Mission;
@@ -14,6 +15,7 @@ public abstract class EntityNotFoundException extends GangsterGramException {
         entities.put(Gangster.class, new GangsterNotFoundException());
         entities.put(Crew.class, new CrewNotFoundException());
         entities.put(Mission.class, new MissionNotFoundException());
+        entities.put(Avatar.class, new AvatarNotFoundException());
 
         return entities.get(type);
     }

@@ -1,4 +1,4 @@
 package org.academiadecodigo.onegitwonders.exceptions;
 
-public class AvatarNotFoundException extends GangsterGramException {
+public class AvatarNotFoundException extends EntityNotFoundException {
 }
